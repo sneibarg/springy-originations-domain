@@ -17,24 +17,34 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations-jakarta</artifactId>
+            <version>2.2.31</version>
+        </dependency>
+        <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>jackson-databind-nullable</artifactId>
-            <version>0.2.6</version>
         </dependency>
     </dependencies>
 
@@ -52,7 +62,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <generatorName>java</generatorName>
+                            <generatorName>spring</generatorName>
                             <inputSpec>${project.basedir}/src/main/resources/openapi/ApplicationReceived.yml</inputSpec>
                             <output>${project.build.directory}/generated-sources/openapi</output>
 
@@ -70,18 +80,16 @@
                             <generateSupportingFiles>false</generateSupportingFiles>
 
                             <configOptions>
-                                <dateLibrary>java8</dateLibrary>
-                                <serializationLibrary>jackson</serializationLibrary>
+                                <interfaceOnly>true</interfaceOnly>
+                                <useSpringBoot3>true</useSpringBoot3>
                                 <useJakartaEe>true</useJakartaEe>
-                                <useBeanValidation>true</useBeanValidation>
-                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
                             </configOptions>
 
-                            <globalProperties>
-                                <models>true</models>
-                                <apis>false</apis>
-                                <supportingFiles>false</supportingFiles>
-                            </globalProperties>
+<!--                            <globalProperties>-->
+<!--                                <models>false</models>-->
+<!--                                <apis>false</apis>-->
+<!--                                <supportingFiles>false</supportingFiles>-->
+<!--                            </globalProperties>-->
                         </configuration>
                     </execution>
                 </executions>

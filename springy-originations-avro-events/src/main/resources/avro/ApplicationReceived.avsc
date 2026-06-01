@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "ApplicationReceived",
-  "namespace": "com.example.loan.avro",
+  "namespace": "org.springy.originations.avro",
   "doc": "Canonical event emitted when an auto loan application is received.",
   "fields": [
     { "name": "eventId", "type": "string" },
